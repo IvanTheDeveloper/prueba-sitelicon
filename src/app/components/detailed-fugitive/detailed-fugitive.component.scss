@@ -1,0 +1,65 @@
+.detailed-fugitive {
+    background-color: cornflowerblue;
+    min-height: 90%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.row {
+    display: flex;
+}
+
+.img {
+    height: 292px;
+    border: 5px solid #333333;
+    border-radius: 2%;
+    margin-right: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+
+.list-card {
+    display: flex;
+    background-color: #333333;
+    height: 300px;
+    min-width: 300px;
+    width: 100%;
+    font-size: large;
+    
+}
+
+.list {
+    color: #ffffff;
+    font-size: large;
+    padding-top: 0 20%;
+    line-height: 30px;
+}
+
+.details-card {
+    display: flex;
+    background-color: #333333;
+    width: 100%;
+    margin-top: 30px;
+    min-width: 600px;
+    min-height: 300px;
+}
+
+.title {
+    color: #ffffff;
+    text-align: center;
+    font-size: x-large;
+}
+
+.description {
+    color: #ffffff;
+    font-size: large;
+    padding: 0 10%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    line-height: 30px;
+}

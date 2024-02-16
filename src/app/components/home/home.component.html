@@ -1,0 +1,65 @@
+<div class="home">
+    <div class="filter">
+        <mat-form-field>
+            <mat-label>Page</mat-label>
+            <input matInput [(ngModel)]="page" type="number" min="1" max="60" placeholder="1">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fugitive sex</mat-label>
+            <mat-select [(ngModel)]="sex" name="sex">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Minimum age</mat-label>
+            <input matInput [(ngModel)]="ageMin" type="number" min="1" max="100" placeholder="20">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Maximum age</mat-label>
+            <input matInput [(ngModel)]="ageMax" type="number" min="1" max="100" placeholder="20">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Eye color</mat-label>
+            <mat-select [(ngModel)]="eyes" name="eyes">
+                <mat-option value="brown">Brown</mat-option>
+                <mat-option value="black">Black</mat-option>
+                <mat-option value="blue">Blue</mat-option>
+                <mat-option value="green">Green</mat-option>
+                <mat-option value="hazel">Hazel</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Hair color</mat-label>
+            <mat-select [(ngModel)]="hair" name="hair">
+                <mat-option value="brown">Brown</mat-option>
+                <mat-option value="black">Black</mat-option>
+                <mat-option value="blond">Blond</mat-option>
+                <mat-option value="gray">Gray</mat-option>
+                <mat-option value="bald">Bald</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="button" (click)="applyFilter()">Apply filter</button>
+        <button mat-raised-button color="primary" class="button" (click)="resetFields()">Reset fields</button>
+    </div>
+
+    <div *ngIf="fugitiveList.length > 0">
+        <div class="list">
+            <app-fugitive *ngFor="let fugitive of paginatedFugitives" [dataFugitive]="fugitive"></app-fugitive>
+        </div>
+        <div class="list">
+            <mat-paginator [length]="fugitiveList.length" [pageSize]="pageSize" [pageSizeOptions]="[1, 4, 8, 20]"
+                (page)="handlePage($event)" aria-label="Select page" class="paginator">
+            </mat-paginator>
+        </div>
+    </div>
+    <div *ngIf="fugitiveList.length < 1" class="error">
+        <img src="../../../assets/busqueda_error.png" alt="error img">
+        <p>Dead end! No results found for the selected filter.</p>
+    </div>
+</div>

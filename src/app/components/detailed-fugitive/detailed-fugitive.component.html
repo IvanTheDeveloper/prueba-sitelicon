@@ -1,0 +1,36 @@
+<div class="detailed-fugitive">
+
+  <div class="row">
+    <img class="img" [src]="dataFugitive?.images[0]?.original" alt="image of the fugitive"
+      onerror="this.src='../../../../../assets/placeholder.webp'" />
+
+    <mat-card class="list-card">
+      <mat-card-header>
+        <mat-card-title class="title">{{dataFugitive?.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="list">
+        <ul>
+          <li>Sex: {{dataFugitive?.sex ?? 'no data'}}</li>
+          <li>Hair: {{dataFugitive?.hair ?? 'no data'}}</li>
+          <li>Eyes: {{dataFugitive?.eyes ?? 'no data'}}</li>
+          <li>Age min: {{dataFugitive?.age ?? 'no data'}}</li>
+          <li>Age max: {{dataFugitive?.age_max ?? 'no data'}}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-card class="details-card">
+      <mat-card-header>
+        <mat-card-title class="title">Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="description">
+        <p>{{format(dataFugitive?.details ?? '')}}</p>
+        <p>{{format(dataFugitive?.remarks ?? '')}}</p>
+        <p>{{format(dataFugitive?.caution ?? '')}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

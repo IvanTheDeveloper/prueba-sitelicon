@@ -1,0 +1,8 @@
+<mat-card class="card" (click)="open(dataFugitive?.uid)">
+  <mat-card-header>
+    <mat-card-title class="title">{{dataFugitive?.title}}</mat-card-title>
+    <mat-card-subtitle class="subtitle">{{dataFugitive?.subjects}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image class="img" [src]="dataFugitive.images[0].original" alt="image of the fugitive"
+    onerror="this.src='../../../../../assets/placeholder.webp'">
+</mat-card>

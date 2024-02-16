@@ -1,0 +1,6 @@
+<mat-toolbar class="header-toolbar">
+    <div>
+        <button mat-button (click)="navHome()" class="text" [ngClass]="{ 'selected': isHomeSelected }">HOME</button>
+        <button mat-button (click)="navAbout()" class="text" [ngClass]="{ 'selected': isAboutSelected }">ABOUT ME</button>
+    </div>
+</mat-toolbar>

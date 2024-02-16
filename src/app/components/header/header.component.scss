@@ -1,0 +1,19 @@
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px;
+  background-color: #FFFFFF;
+}
+
+.text {
+  font-size: xx-large;
+  padding: 30px;
+  margin: 30px;
+}
+
+.selected {
+  background-color: #673AB7;
+  color: #FFFFFF;
+}
