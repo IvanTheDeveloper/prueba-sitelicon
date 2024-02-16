@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs'
 })
 export class FbiApiService {
   private apiUrlList = 'https://api.fbi.gov/wanted/v1/list'
-  private apiUrlSingle = 'https://api.fbi.gov/@wanted-person/'
+  private apiUrlPerson = 'https://api.fbi.gov/@wanted-person/'
 
   constructor(private http: HttpClient) { }
 
@@ -16,18 +16,12 @@ export class FbiApiService {
   }
 
   getFugitivesByFilter(page: number, sex: string, ageMin: number, ageMax: number, hair: string, eyes: string): Observable<any> {
-    const params = { page, sex, age_min: ageMin, age_max: ageMax, hair, eyes };
-    return this.http.get(this.apiUrlList, { params }).pipe(
-      tap((data: any) => {
-        console.log('Total:', data.total);
-        console.log('Page:', data.page);
-        console.log('Fugitives data:', data.items);
-      })
-    );
+    const params = { page, sex, age_min: ageMin, age_max: ageMax, hair, eyes }
+    return this.http.get(this.apiUrlList, { params })
   }
 
   getFugitiveById(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrlSingle}${id}`)
+    return this.http.get(`${this.apiUrlPerson}${id}`)
   }
 
 }

@@ -10,13 +10,13 @@ import { FbiApiService } from 'src/app/services/fbi-api.service';
 export class HomeComponent implements OnInit {
   fugitiveList!: any[]
 
-  //paginator
+  //paginador
   @ViewChild(MatPaginator) paginator!: MatPaginator
   paginatedFugitives!: any[]
   pageSize: number = 4
   pageIndex: number = 0
 
-  //filter
+  //filtro
   page: any = 1
   sex!: string
   ageMin!: any
@@ -27,47 +27,49 @@ export class HomeComponent implements OnInit {
   constructor(private dataSource: FbiApiService) { }
 
   ngOnInit(): void {
-    this.getAllFugitives();
+    this.getAllFugitives()
   }
 
   getAllFugitives() {
-    this.page = this.page ?? '';
-    this.sex = this.sex ?? '';
-    this.ageMin = this.ageMin ?? '';
-    this.ageMax = this.ageMax ?? '';
-    this.hair = this.hair ?? '';
-    this.eyes = this.eyes ?? '';
+    this.page = this.page ?? ''
+    this.sex = this.sex ?? ''
+    this.ageMin = this.ageMin ?? ''
+    this.ageMax = this.ageMax ?? ''
+    this.hair = this.hair ?? ''
+    this.eyes = this.eyes ?? ''
 
     this.dataSource.getFugitivesByFilter(this.page, this.sex, this.ageMin, this.ageMax, this.hair, this.eyes).subscribe(data => {
-      this.fugitiveList = data.items;
-      this.paginateFugitives();
-    });
+      this.fugitiveList = data.items
+      this.paginateFugitives()
+    })
   }
 
   paginateFugitives(): void {
-    const startIndex = this.pageIndex * this.pageSize;
-    this.paginatedFugitives = this.fugitiveList.slice(startIndex, startIndex + this.pageSize);
+    const startIndex = this.pageIndex * this.pageSize
+    this.paginatedFugitives = this.fugitiveList.slice(startIndex, startIndex + this.pageSize)
   }
 
   handlePage(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.paginateFugitives();
+    this.pageIndex = event.pageIndex
+    this.pageSize = event.pageSize
+    this.paginateFugitives()
   }
 
   applyFilter() {
-    this.getAllFugitives() //refresh data
+    this.getAllFugitives() //refrescar los datos
     this.pageIndex = 0
     this.paginator.pageIndex = 0
   }
 
   resetFields() {
-    this.page = 1;
-    this.sex = ''; //this is why we use 'any' type isntead of 'number'
-    this.ageMin = '';
-    this.ageMax = '';
-    this.eyes = '';
-    this.hair = '';
+    this.page = 1
+    this.sex = ''
+    this.ageMin = ''
+    this.ageMax = ''
+    this.eyes = ''
+    this.hair = ''
+    /* por esto uso 'any' en vez de 'number' para el tipo de variable,
+    la api puede pillar los campos vacíos y devolver una respuesta como si no se hubiesen usado parámetros sin dar error */
   }
 
 }

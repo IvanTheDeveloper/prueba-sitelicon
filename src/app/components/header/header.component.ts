@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isHomeSelected: boolean = false;
-  isAboutSelected: boolean = false;
+  isHomeSelected!: boolean
+  isAboutSelected!: boolean
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.updateSelectedState();
+    this.updateSelectedState()
     this.router.events.subscribe(() => {
-      this.updateSelectedState();
-    });
+      this.updateSelectedState()
+    })
   }
 
   updateSelectedState() {
@@ -25,11 +25,11 @@ export class HeaderComponent {
   }
 
   navHome() {
-    this.router.navigate(['fugitives']);
+    this.router.navigate(['fugitives'])
   }
 
   navAbout() {
-    this.router.navigate(['about']);
+    this.router.navigate(['about'])
   }
 
 }

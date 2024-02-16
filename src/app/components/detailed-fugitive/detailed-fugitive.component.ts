@@ -8,23 +8,23 @@ import { FbiApiService } from 'src/app/services/fbi-api.service';
   styleUrls: ['./detailed-fugitive.component.scss']
 })
 export class DetailedFugitiveComponent implements OnInit {
-  dataFugitive: any;
+  dataFugitive!: any
 
   constructor(private route: ActivatedRoute, private dataSource: FbiApiService) { }
 
   ngOnInit(): void {
-    this.getFugitive();
+    this.getFugitive()
   }
 
   getFugitive() {
     const fugitiveId = this.route.snapshot.paramMap.get('id') ?? ''
     this.dataSource.getFugitiveById(fugitiveId).subscribe(data => {
-      this.dataFugitive = data;
-    });
+      this.dataFugitive = data
+    })
   }
 
   format(str: string): any {
-    return str.replace(/<p>/g, '').replace(/<\/p>/g, '');
+    return str.replace(/<p>/g, '').replace(/<\/p>/g, '')
   }
 
 }
